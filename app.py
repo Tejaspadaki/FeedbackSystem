@@ -513,4 +513,3 @@ def logout():
     if session['email']:
         session.pop('email', None)
         return redirect('/')
-
