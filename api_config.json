@@ -1,0 +1,10 @@
+{
+    "student_login_api": "https://codequell.com/FeedbackSystem/student_login.php",
+    "hod_login_api": "https://codequell.com/FeedbackSystem/hod_login.php",
+    "teacher_login_api": "https://codequell.com/FeedbackSystem/teacher_login.php",
+    "fetch_subject_code": "https://codequell.com/FeedbackSystem/fetch_subject_code.php",
+    "fetch_teacher_id": "https://codequell.com/FeedbackSystem/fetch_teacher_id.php",
+    "edit_password": "https://codequell.com/FeedbackSystem/edit_password.php",
+    "fetch_student_profile": "https://codequell.com/FeedbackSystem/fetch_student_profile_details.php",
+    "edit_profile": "https://codequell.com/FeedbackSystem/edit_profile_api.php"
+}

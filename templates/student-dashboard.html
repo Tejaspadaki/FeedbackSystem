@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="../static/Images/sgu-logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the modal (popup) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 50; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        }
+    
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .main{
+            animation: test3 2s ease-in-out .3s 1  ;
+        }
+        @keyframes test3{
+
+            0%{
+               background-color: white;
+            }
+
+            100%{
+           
+            }
+
+            } 
+
+        .myanimation2{
+            animation: test2 2s ease-in-out .3s 1  ;
+        }
+
+        @keyframes test2 {
+
+            0%{
+                position: absolute;
+                left: -20%;
+            }
+
+            100%{
+               position: absolute;
+               left: 0%;
+            }
+            
+        } 
+
+
+        .myanimation{
+            animation: test 2s ease-in-out .3s 1  ;
+        }
+
+        @keyframes test {
+
+            from{
+                margin-left: 100%;
+            }
+
+            to{
+                margin-left: 200px;
+            }
+            
+        } 
+
+        .myanimation div, .myanimation p{
+            animation: test4 4s ease-in-out .1s 1  ;
+        }
+
+        @keyframes test4 {
+
+            0%{
+                /* transform: scale(0); */
+                color: white;
+                background-color: white;
+                box-shadow: 0px 0px 0px white;
+            }
+
+            50%{
+                /* transform: scale(0); */
+                color: white;
+                background-color: white;
+                box-shadow: 0px 0px 0px white;
+            }
+
+           100%{
+                /* transform: scale(1); */
+                color: black;
+            }
+            
+        } 
+
+        @media (max-width:500px){
+           .myanimation{
+                animation: test 2s ease-in-out .2s 1 ;
+            }
+
+            @keyframes test {
+               0%{
+                margin-top: 703px;
+               }
+
+        
+
+               100%{
+
+               }
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <div class="flex flex-col md:flex-row h-screen bg-[#00293B] main ">
+        <!-- Sidebar -->
+        <div class="text-white md:w-[200px] w-full md:fixed flex flex-col items-center py-4 max-[500px]:hidden  myanimation2"  >
+            <div class="flex items-center justify-center w-full px-4 md:px-0">
+                <a href="/profile">
+                <img class="border-white rounded-full w-16 md:mx-0 mx-4" src="../static/Images/student_profile_logo.png"
+                    alt="Profile" /></a>
+                <div class="md:hidden block">
+                    
+                    <img class="w-8" src="../static/Images/logout.png" alt="Logout" />
+                </div>
+            </div>
+            <h1 class="text-center text-gray-400 mt-3 font-bold">
+                {{ session.name }}
+            </h1>
+            <h1 class="text-center text-gray-400 mt-3 font-bold max-[500px]:hidden">
+                {{ session.year_class }}
+            </h1>
+            <p class="text-center text-gray-400 mt-3 text-xl font-serif font-bold md:hidden block max-[500px]:hidden">
+                Welcome, {{name}}
+            </p>
+            <nav class="mt-6 w-full">
+                <ul>
+                    <li class="mt-8 flex flex-col justify-center items-center hidden md:flex">
+                        <img class="w-8" src="../static/Images/dashboard_logo.png" alt="Dashboard" />
+                        <a href="#" class="text-center text-gray-400 ml-2">Dashboard</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-8 flex flex-col justify-center items-center hidden md:flex">
+                <img class="w-8" src="../static/Images/logout.png" alt="Logout" />
+                <a href="/logout" class="text-center text-gray-400 ml-2">Logout</a>
+            </div>
+        </div>
+
+        <div class="min-[500px]:hidden">
+            <div class="md:hidden block max-[500px]:mt-2 max-[500px]:flex max-[500px]:justify-end max-[500px]:mx-5">
+                <button class="min-[500px]:hidden text-3xl text-white" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+
+                <nav class="">
+                    <ul class=" gap-10 px-10 bg-[#00293ba6] text-white font-bold font-serif py-2 absolute top-0 right-0 h-full w-full z-[999] flex-col items-center justify-start backdrop-blur hidden slider" >
+                    <a href="" class=" absolute right-4 text-3xl"><li class="" onclick="cancel()"><i class="fa-solid fa-x"></i></li></a>
+                    <a href="/templates/student-dashboard.html" class="text-xl flex gap-4 items-center justify-around mt-14 "><img src="/static/Images/dashboard_logo.png" alt="dashboard_logo" class="w-7">Dashboard</a>
+                    <a href="/templates/student-login.html" class="text-xl  flex gap-4 items-center justify-around"><img src="/static/Images/logout.png" alt="logout" class="w-7">logout</a>
+
+                   
+                    <div id="codequell" class="flex flex-col items-center mt-4 w-full text-center space-y-2 absolute bottom-4 ">
+                        <span class="text-sm">Developed By</span>
+                        <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                        <span class="text-xs text-white">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                    </div>
+                </nav>
+            </div>
+
+            <div
+                class="max-[500px]:flex max-[500px]:flex-row-reverse max-[500px]:justify-between max-[500px]:px-5 max-[500px]:items-center max-[500px]:my-8" >
+                <h1 class="text-center text-gray-400 font-bold">
+                    {{ session.name }}
+                </h1>
+                <img class="border-white rounded-full w-16 md:mx-0 mx-4" src="../static/Images/student_profile_logo.png"
+                    alt="Profile" />
+            </div>
+        </div>
+
+        <div class="md:ml-[200px] w-full bg-white max-[500px]:border max-[500px]:rounded-t-[50px] p-10 rounded-tl-[40px] md:rounded-bl-[40px] myanimation">
+            <div class="mb-10 md:block hidden">
+                <p class="text-2xl font-serif font-bold">Welcome, {{session.name}}</p>
+            </div>
+
+            <div id="error" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    
+                  
+                   
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="bg-white shadow-md rounded-lg p-4 max-w-lg">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    {% for category, message in messages %}
+                                        <div class=" border-t border-b text-red-700 px-4 py-3 mb-2"
+                                            role="alert">
+                                            <p class="font-bold">{{ message }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="text-black bg-white text-[24px] rounded-full p-1 ml-2" onclick="this.parentElement.parentElement.remove();">
+                                    <i class="fa-solid fa-x" style="position:relative; bottom:28px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg flex items-center justify-center" id="attendance">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">Attendance</h2>
+                        <div class="flex justify-center items-center">
+                            <div class="relative w-24 h-24">
+                                <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+                                    <!-- Background circle -->
+                                    <circle cx="18" cy="18" r="15.9155" fill="none" stroke="#d1d5db" stroke-width="4" />
+
+                                    <!-- Foreground circle with animation -->
+                                    <circle id="attendanceCircle" cx="18" cy="18" r="15.9155" fill="none"
+                                        stroke="#00293B" stroke-width="4" stroke-dasharray="100, 100"
+                                        stroke-dashoffset="100" stroke-linecap="round"
+                                        class="transition-[stroke-dashoffset] duration-1000 delay-[2s] ease-out"></circle>
+                                </svg>
+                                <!-- Text in the center of the pie -->
+                                <div class="flex justify-center items-center absolute inset-0 text-xl font-bold">
+                                    {{ session.attendance }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback section -->
+                <a href="/student-feedback">
+                    <div id="feedback"
+                        class="bg-gray-100 p-6 rounded-lg shadow-lg flex items-center justify-center h-[200px] max-[500px]:mb-[270px]">
+                        <h2 class="text-xl font-bold">Feedback</h2>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+<script>
+     function toggleSidebar(){
+    const slid = document.querySelector(".slider");
+    slid.style.display='flex';
+ }
+
+ function cancel(){
+    const close = document.querySelector(".slider")
+    sild.style.display='none'
+ }
+</script>
+
+<script>
+    // Function to open the modal
+    function openModal() {
+        document.getElementById('error').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('error').style.display = 'none';
+    }
+
+    // Close the modal if clicked outside the content area
+    window.onclick = function(event) {
+        var modal = document.getElementById('changePasswordModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    // This function will be executed when the window is fully loaded
+    window.onload = function() {
+        const attendanceValue = {{ session.attendance }}; // Assuming session.attendance is a number
+        const attendanceCircle = document.getElementById('attendanceCircle');
+
+        // Trigger the pie chart animation based on session attendance
+        if (attendanceCircle) {
+            attendanceCircle.style.strokeDashoffset = 100 - attendanceValue;
+        }
+    };
+</script>
+
+
+</html>

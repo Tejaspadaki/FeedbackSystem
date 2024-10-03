@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom styles for the modal (popup) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 50; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        }
+    
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    
+    <title>Student Profile</title>
+</head>
+<body>
+    
+    <div class="main flex h-100 bg-[#00293B]">
+        <div class="  text-white md:w-[200px] h-[100vh] fixed   ">
+            <div class="head flex justify-center items-center flex-col mt-4">
+                <img class="border-white rounded-lg items-center" src="/static/Images/Studentlogo.svg" alt="">
+            <h1 class="text-center text-gray-400 mt-3 font-bold ">{{ session.name }}</h1>
+
+            <nav class="mt-6">
+                <ul>
+                    <li class="mt-8 flex justify-center"><a href="student-dashboard"><img class="w-8 mx-8" src="/static/Images/Dashboard.svg" alt=""> <p class="text-center text-gray-400">Dashboard</p></a> </li>
+                   
+                    <li class="mt-8 flex justify-center"><a href="/student-feedback"><img class="w-8 mx-8" src="/static/Images/feedback.svg" alt=""> <p class="text-center text-gray-400">Feedback</p></a></li>
+                </ul>
+            </nav>
+
+            <div class="mt-20 flex justify-center flex-col items-center">
+                <a href="logout" class="flex justify-center items-center flex-col text-center text-gray-400"><img class="w-8" src="/static/Images/Logout.svg" alt="">Log Out</a>
+            </div>
+        </div>
+            
+            
+        </div>
+
+
+        <div class="md:w-[100%] md:h-[100vh] bg-white rounded-l-3xl  overflow-auto touch-auto md:ml-[200px] ">
+            <div class="mx-12">
+                <div class="r-head flex justify-between mt-2 mx-6">
+                    <a href="/edit-profile"><p class="font-serif">Edit</p></a>
+                    <a href="javascript:void(0)" onclick="openModal()" class="font-serif"><p class="font-serif">Change Password</p></a>
+                </div>
+
+                <div class="">
+                    <div class="flex justify-center items-center"><img class="w-20 object-center " src="/static/Images/Profile.svg" alt="Profile"></div>
+                    <p class="text-center font-bold text-xl font-serif mt-1">{{ session.name }}</p>
+                    <p class="text-center font-bold text-lg">{{session.email}}</p>
+                    <p class="text-center font-serif mt-1">Computer Science & Engineering </p>
+
+                    <div class="flex justify-center items-center">
+                        
+                        <div class="border-2 border-gray-600 flex justify-center items-center p-2   mt-2 rounded-3xl ">
+                            <p class="  font-bold px-2 border-r-2 border-black">YEAR- {{ session.year_class }} </p>
+                            <p class="font-bold px-2 border-r-2 border-black">Division - B</p>
+                            <p class="font-bold px-2 border-r- border-black">Batch - B1</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="changePasswordModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2 class="text-xl font-bold mb-4">Change Password</h2>
+                        <form action="/change_password" method="post">
+                            <label for="current_password" class="block">Current Password</label>
+                            <input type="password" id="current_password" name="current_password" class="border rounded w-full py-2 px-3 mb-4" required><br>
+
+                            <label for="student_password" class="block">New Password</label>
+                            <input type="password" id="student_password" name="student_password" class="border rounded w-full py-2 px-3 mb-4" required><br>
+
+                            <label for="confirm_password" class="block">Confirm New Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" class="border rounded w-full py-2 px-3 mb-4" required><br>
+
+                            <button type="submit" class="bg-[#00293b] text-white px-4 py-2 rounded">Change Password</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="flex justify-around items-center">
+                    <div>
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/Phone.svg" alt="Phone" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.Mobile }}</p>
+                        </div>
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/DOB.svg" alt="DOB" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.DOB }}</p>
+                        </div>
+                        
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/RollNo.svg" alt="Roll No" class="w-8">
+                            <p class="font-bold text-sm font-sans">11</p> <!-- Replace with dynamic data if available -->
+                        </div>
+                       
+                    </div>
+                    <div>
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/MailID.svg" alt="Email" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.Email }}</p>
+                        </div>
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/ABID.svg" alt="ABID" class="w-8">
+                            <p class="font-bold text-sm font-sans">123456789123</p> <!-- Replace with dynamic data if available -->
+                        </div>
+                       
+                       
+                    </div>
+                    <div class="">
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/Address.svg" alt="Address" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.Address }}</p>
+                        </div>
+
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/Drop of Blood.svg" alt="Blood Group" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.Blood_group }}</p>
+                        </div>
+
+                        <div class="flex gap-9 items-center m-2">
+                            <img src="/static/Images/User Male.svg" alt="Gender" class="w-8">
+                            <p class="font-bold text-sm font-sans">{{ profile.Gender }}</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Family Information -->
+                <div class="mt-6 2xl:mt-4">
+                    <div class="flex justify-around">
+                        <p class=" 2xl:text-lg md:text-sm font-bold">Father Name: {{ profile.Father_Name }}</p>
+                        <p class=" 2xl:text-lg md:text-sm font-bold">Mother Name: {{ profile.Mother_Name }}</p>
+                        <p class=" 2xl:text-lg md:text-sm font-bold">Guardian Name: {{ profile.Guardian_Name }}</p>
+                        
+                    </div>
+                    <div class="flex justify-around">
+                        <div class="flex justify-around items-center p-2 px-4 gap-3 rounded-lg bg-gray-100 md:mt-3 2xl:mt-6">
+                            <img src="/static/Images/Phone.svg" alt="Phone No" class="w-6">
+                            <p class="font-bold">{{ profile.Father_Mobile }}</p>
+                        </div>
+                        <div class="flex justify-around items-center p-2 px-4 gap-3 rounded-lg bg-gray-100 md:mt-3 2xl:mt-6">
+                            <img src="/static/Images/Phone.svg" alt="Phone No" class="w-6">
+                            <p class="font-bold">{{ profile.Mother_Mobile }}</p>
+                        </div>
+                        <div class="flex justify-around items-center p-2 px-4 gap-3 rounded-lg bg-gray-100 md:mt-3 2xl:mt-6">
+                            <img src="/static/Images/Phone.svg" alt="Phone No" class="w-6">
+                            <p class="font-bold">{{ profile.Guardian_Mobile }}</p>
+                        </div>
+                       
+                    </div>
+
+                    <div class="flex justify-around gap-6 items-center mt-6">
+                       <div class="flex justify-center gap-4 items-center">
+                        <p class=" text-lg font-bold">10th School: {{ profile['10th_School_Name'] }}</p>
+                        <div class="flex justify-around items-center py-2 px-4 font-bold bg-gray-100 rounded-lg ">{{ profile['10th_Marks'] }}%</div>
+
+                       </div>
+                       <div class="flex justify-center gap-4 items-center">
+                        <p class="mt-3  text-lg font-bold">12th School: {{ profile['12th_School_Name'] }}</p>
+                        <div class="mt-3 flex justify-around items-center py-2 px-4 font-bold bg-gray-100 rounded-lg ">{{ profile['12th_Marks'] }}%</div>
+                       </div>
+                    </div>
+                </div> 
+
+                <!-- <div class="mt-32">
+                    <div class="flex justify-around items-center">
+                        <div class="flex justify-around items-center rounded-xl bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class=" font-bold">Aadhar Card</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                        <div class="flex justify-around items-cente rounded-xlr bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class= font-bold"">10th MarkSheet</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                        <div class="flex justify-around items-center rounded-xl bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class=" font-bold">12th MarkSheet</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                    </div> --
+                  <div class="flex justify-around items-center mt-12">
+                        <div class="flex justify-around items-center rounded-xl bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class=" font-bold">Domicile Certificate</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                        <div class="flex justify-around items-center rounded-xl bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class=" font-bold">CET Result</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                        <div class="flex justify-around items-center rounded-xl bg-[#ECF6FF] px-3 py-2 w-60">
+                            <p class=" font-bold">Migration Certificate</p>
+                            <img src="/static/Images/Upload.svg" alt="Upload" class="w-6">
+                        </div>
+                    </div> -->
+            </div>  
+
+            <!-- <hr class="border-2 border-black mt-4">
+
+            <div class="flex justify-center mt-4 ">
+                <button class="font-bold font-serif rounded-2xl text-white text-lg  bg-[#00293b] px-32 py-1 object-center"> Resume</button >           
+        </div> -->
+    </div>
+    
+    <script>
+        // Function to open the modal
+        function openModal() {
+            document.getElementById('changePasswordModal').style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('changePasswordModal').style.display = 'none';
+        }
+
+        // Close the modal if clicked outside the content area
+        window.onclick = function(event) {
+            var modal = document.getElementById('changePasswordModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

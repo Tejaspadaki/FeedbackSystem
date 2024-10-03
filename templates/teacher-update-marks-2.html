@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+    <title>Stundent Dashboard</title>
+</head>
+<body>
+        <div class="main flex h-100 bg-[#00293B] md:overflow-hidden">
+            <div class="  bg-rgb(0, 41, 59) text-white h-[100vh] w-[150px] max-[500px]:hidden ">
+                <div class="head ">
+                    <img class="mx-8 mt-6 border-white rounded-lg object-center md:ml-12 w-20 md:size-12" src="../static/Images/teacher-profile.png" alt="">
+                    <h1 class="text-center text-gray-400 mt-3 font-bold ">Teacher's Name</h1>
+    
+                    <nav class="mt-12 ">
+                        <ul class="flex justify-center items-start ">
+                            <li class="mt-8 md:flex justify-center"><a href="/TeacherDashboard.html"><img class="md:size-8 mx-8"
+                                        src="../static/Images/dashboard_logo.png" alt=""  >
+                                    <p class="text-center text-gray-400">Dashboard</p>
+                                </a> </li>
+                            <!-- <li class="mt-8 flex items-center"><a href="/TeacherStudentReport.html"><img class="w-8 mx-8"
+                                        src="/Images/Student-report.svg" alt="">
+                                    <p class="text-center  text-gray-400">Student Report</p>
+                                </a></li> -->
+                            <!-- <li class="mt-8 flex items-center"><a href="/TeacherCerifyApplication.html"><img class="w-8 mx-8"
+                                        src="/Images/Application Form.svg" alt="">
+                                    <p class="-ml-2 text-center text-gray-400">Leave Application</p>
+                                </a></li> -->
+                                <li class="text-center absolute bottom-6 text-gray-400"> <a href="" class="flex justify-center items-center flex-col"><img class="md:size-8" src="../static/Images/logout.png" alt="" >Logout</a></li>
+                    </nav>
+    
+                    <div class="mt-72 lg:mt-96 lg:mb-[69px]  md:flex justify-center">
+                       
+                    </div>
+                </div>
+    
+    
+            </div>
+
+
+            <div class="w-11/12 bg-white rounded-l-3xl  max-[500px]:w-[100vh] max-[500px]:bg-[#00293b] ">
+                <div class="min-[500px]:hidden">
+                    <div class="md:hidden block max-[500px]:mt-2 max-[500px]:flex max-[500px]:justify-end max-[500px]:mx-5">
+                        <button class="min-[500px]:hidden text-3xl text-white" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        
+                        <nav class="">
+                            <ul class=" gap-10 px-10 bg-[#00293ba6] text-white font-bold font-serif py-2 absolute top-0 right-0 h-full w-full z-[999] flex-col items-center justify-start backdrop-blur hidden slider" >
+                            <a href="" class=" absolute right-4 text-xl"><li class="" onclick="cancel()"><i class="fa-solid fa-x"></i></li></a>
+                            <a href="#" class="text-xl flex gap-4 items-center justify-around mt-20 "><img src="/static/Images/dashboard_logo.png" alt="dashboard_logo" class="w-7">Dashboard</a>
+                            <a href="/logout" class="text-xl  flex gap-4 items-center justify-around"><img src="/static/Images/logout.png" alt="logout" class="w-7">logout</a>
+        
+                            <div id="codequell" class="flex flex-col items-center mt-4 w-full text-center space-y-2 absolute bottom-4">
+                                <span class="text-sm">Developed By</span>
+                                <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                                <span class="text-xs text-white">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                            </div>
+        
+                        </nav>
+                    </div>
+        
+                   
+                </div>
+
+                <div class="head flex justify-between mt-4 mx-6  max-[500px]:mb-10">
+                    <p class="font-bold text-2xl max-[500px]:text-white max-[500px]:font-serif">Upload Marks</p>
+                    <!-- <p class="font-bold bg-[#F5F7FB] text-gray-500 flex items-center px-2 rounded-3xl">Computer Science & Engineering </p> -->
+                    
+                </div>
+
+                <div class="mx-32 max-[500px]:bg-white max-[500px]:mx-0 max-[500px]:rounded-t-[40px] max-[500px]:pt-4">
+                   
+
+                    <div class="bg-sky-100 px-10 py-4  mt-14 mx-5 max-[500px]:mx-4 rounded-2xl max-[500px]:px-3 ">
+                        <p class="mt-4">TY CSE 'A'</p>
+
+                        <form action="" method="post">
+
+                            <div class="flex justify-around items-center mt-6 overflow-auto 2xl:h-[300px] md:h-[250px] max-[500px]:text-sm max-[500px]:justify-between max-[500px]:items-center">
+                                <div class="">
+                                    <p class="mt-3 max-[500px]:mt-0 font-bold max-[500px]:[12px] ">PRN No.</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E01</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E02</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E03</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E04</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E05</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">E06</p>
+                                </div>
+                                <div class="">
+                                    <p class="font-bold max-[500px]:[12px] max-[500px]:ml-2" >Name</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">JASWANTH REDDY</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">TEJAS PADAKI</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">Tejas Terse</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">AMEY KULKARNI</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">DAMODHAR ZANWAR</p>
+                                    <p class="mt-3 max-[500px]:text-[11px]">Srujal K Y</p>
+                                </div>
+                                <div class="flex flex-col max-[500px]:gap-2 gap-3">
+                                    <p class="font-bold  max-[500px]:text-[12px]">Total Marks</p>
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" value="30" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                </div>
+    
+                                <div class="flex flex-col max-[500px]:gap-2 gap-3 max-[500px]:ml-2">
+                                    <p class="font-bold max-[500px]:text-[12px] ">Obtained marks</p>
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                    <input type="number" name="" id="" class=" h-6  bg-[#D9D9D9] w-24 rounded-2xl px-2 text-center max-[500px]:w-14">
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center mt-6 ">
+                                <button type="submit" class="bg-[#00293B] text-white px-10 py-2 rounded-3xl mt-10 font-bold w-30 flex justify-center">SUBMIT</button>
+    
+                            </div>
+
+                        </form>
+
+                        <!-- <hr class="mt-3 border-black border-[1.5px]"> -->
+
+                        <!-- <div class="flex justify-around mt-10">
+                            <p class="font-bold ">Total =</p>
+                            <p class="font-bold ">Present =</p>
+                            <p class="font-bold ">Absent =</p>
+                        </div> -->
+
+                        
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        
+
+        </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    function toggleSidebar(){
+   const slid = document.querySelector(".slider");
+   slid.style.display='flex';
+}
+
+function cancel(){
+   const close = document.querySelector(".slider")
+   sild.style.display='none'
+}
+</script>
+</html>

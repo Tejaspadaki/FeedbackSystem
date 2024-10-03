@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stundent Dashboard</title>
+</head>
+<style>
+    .main{
+       
+        animation: a3 1s ease-in-out .0s 1 ;
+    }
+
+    @keyframes a3 {
+
+        0%{
+            background-color: white;
+        }
+
+        100%{
+
+        }
+        
+    }
+    
+
+    #navbar{
+        animation: a1 2s ease-in-out .1s 1 ;
+    }
+
+    @keyframes a1 {
+
+        0%{
+            margin-top: 700px;
+        }
+
+        100%{
+
+        }
+        
+    }
+
+    #middle{
+        animation: a2 2s ease-in-out .2s 1 ;
+    }
+
+    @keyframes a2 {
+
+        0%{
+            margin-top: 700px;
+        }
+
+        100%{
+
+        }
+        
+    }
+
+    #right-side{
+        animation: a3 2s ease-in-out .4s 1 ;
+    }
+
+    @keyframes a3 {
+
+        0%{
+            margin-top: 700px;
+        }
+
+        100%{
+
+        }
+        
+    }
+
+
+</style>
+<body>
+        <div class="main flex h-100 bg-[#00293B]">
+            <div class="  bg-rgb(0, 41, 59) text-white w-1/12 " id="navbar">
+                <div class="head">
+                    <img class="mx-8 mt-6 border-white rounded-lg w-16" src="../static/Images/teacher-profile.png" alt="">
+                <h1 class="text-center text-gray-400 mt-3 font-bold ">HOD</h1>
+
+                <nav class="mt-6">
+                    <ul class="flex justify-center items-center flex-col">
+                        <li class="mt-8 flex items-center"><a href="/HODDashboard.html"><img class="w-8 mx-8" src="../static/Images/dashboard_logo.png" alt=""> <p class="text-center text-gray-400 text-sm">Dashboard</p></a> </li>
+                        <li class="mt-8 flex items-center"><a href="/HODStudentReport.html"><img class="w-8 mx-8" src="../static/Images/Student-report.svg" alt=""> <p class="text-center text-gray-400 text-sm">Student Report</p></a></li>
+                        <li class="mt-8 flex items-center"><a href="/HODVerifyApplication.html"><img class="w-8 mx-12" src="../static/Images/Application Form.svg" alt=""> <p class="text-center text-gray-400 text-sm">Leave Application</p></a></li> 
+                        <li class="mt-8 flex items-center"><a href="/HODFunction.html"><img class="w-8 mx-8" src="../static/Images/HOD Function.svg" alt=""> <p class="text-center text-gray-400 text-sm">HOD Function </p></a></li>
+                        <li class="mt-8 flex items-center"><a href="/HODFeedbackResult.html"><img class="w-8 mx-8" src="../static/Images/feedback.svg" alt=""> <p class="text-center text-gray-400 text-sm">Feedback</p></a></li>
+                    </ul>
+                </nav>
+ 
+                <div class="mt-20 mb-[29px] flex justify-center">
+                    <img class="w-8" src="../static/Images/logout.png" alt="logout">
+                </div>
+            </div>
+                
+                
+            </div>
+
+
+            <div class="w-9/12 bg-white rounded-l-3xl  " id="middle">
+
+                <div class="head flex justify-between mt-4 mx-6">
+                    <p class="font-bold bg-[#F5F7FB] flex items-center px-2 rounded-3xl">Computer Science & Engineering </p>
+                    <div class="flex justify-evenly gap-4">
+                        <p class="text-gray-500">17 july 2024 , wednesday</p>
+                        <a href=""><img src="/Images/Bell.svg" alt=""></a>
+                    </div>
+                </div>
+
+                <div class="flex justify-around mt-6">
+                    <div class="flex justify-around items-center">
+                        <a href="/TeacherSubject.html" class="flex items-center bg-sky-100 w-48 py-4 md:py-2 px-3 gap-5 rounded-xl mt-0"> <img class="md:size-8" src="../static/Images/subject-1.png" alt="">
+                        <p class="text-center ">Mathematics</p></a>
+       
+                    </div>
+                    <div class="flex justify-around items-center">
+                        <a href="" class="flex items-center  bg-sky-100 w-48  py-4 md:py-2 px-3 gap-5 rounded-xl mt06"> <img class="md:size-8" src="../static/Images/subject-2.png" alt="">
+                        <p class="text-center ">AI</p></a>
+
+                    </div>
+                    <div class="flex justify-around items-center">
+                        <a href="" class="flex items-center  bg-sky-100 w-48 py-4 md:py-2 px-3 gap-5 rounded-xl mt-0"> <img class="md:size-8" src="../static/Images/subject-3.png" alt="">
+                        <p class="text-center ">Data Science</p></a>
+                      
+                    </div>
+                </div>
+
+                <div class="flex justify-around mt-16 md:mt-8 xl:mt-20">
+                    <div class="bg-sky-100 w-96 rounded-3xl">
+                        <div class="head flex justify-around m-6 items-center">
+                            <h1 class="font-bold ">Upload Attendance</h1>
+                            <img src="../static/Images/rightArrow.png" class="size-4" alt="">
+                        </div>
+
+                        <div class="mt-12">
+                        <a href="../templates/teacher-update-attendance.html">
+                            <div class="flex justify-around px-2 gap-6 mt-6  items-center">
+                                    <p>TY CSE 'A'</p>
+
+                                <img src="../static/Images/icon.png" alt="" class="size-2">
+    
+
+                            </div>
+                        </a>    
+                            
+                            <hr class=" border-2 w-80 ml-6 my-4 border-gray-400 rounded">
+                            
+                            <a href="../templates/teacher-update-attendance.html">  
+                                <div class="flex justify-around gap-6 px-2 mt-6 items-center">
+                                    <p>TY CSE 'B'</p>
+                                
+                                    <img src="../static/Images/icon.png" alt="" class="size-2">
+                                </div>
+                            </a>
+                            
+                            <hr class=" border-2 w-80 ml-6 mt-4 border-gray-400 rounded">
+                            
+                            <a href="../templates/teacher-update-attendance.html">
+                                <div class="flex justify-around gap-6 px-2 my-4 items-center">
+                                    <p>TY CSE 'C'</p>
+                                    <img src="../static/Images/icon.png" alt="" class="size-2">
+    
+                                </div>
+                            </a>
+                        </div>
+                       
+                       
+                    </div>
+
+                    <div class="bg-sky-100 w-96 rounded-3xl">
+                        <div class="head flex justify-around m-6 items-center">
+                            <h1 class="font-bold ">Input Marks</h1>
+                            <img src="../static/Images/rightArrow.png" class="size-4" alt="">
+                        </div>
+
+                        <div class="mt-12">
+                           <a href="/TeacherUpdateMarks.html">
+                                <div class="flex justify-around px-2 gap-6 mt-6  items-center">
+                                    <p>TY CSE 'A'</p>
+
+                                <img src="../static/Images/icon.png" alt="" class="size-2">
+        
+
+                                </div>
+                           </a>
+                            
+                            <hr class=" border-2 w-80 ml-6 my-4 border-gray-400 rounded">
+                            
+                            <a href="/TeacherUpdateMarks.html">
+                                <div class="flex justify-around gap-6 px-2 mt-6 items-center">
+                                    <p>TY CSE 'B'</p>
+                                
+                                    <img src="../static/Images/icon.png" alt="" class="size-2">
+                                </div>
+                            </a>
+                            
+                            <hr class=" border-2 w-80 ml-6 mt-4 border-gray-400 rounded">
+                            
+                            <a href="/TeacherUpdateMarks.html">
+                                <div class="flex justify-around gap-6 px-2 my-4 items-center">
+                                    <p>TY CSE 'C'</p>
+                                    <img src="../static/Images/icon.png" alt="" class="size-2">
+    
+                                </div>
+                            </a>
+                        </div>
+                       
+                       
+                    </div>
+                </div>
+
+                <div class="bottom mt-6 flex justify-center  xl:mt-12 ">
+                    <div class="bg-sky-100 mt-10 h-[150px] w-[250px] rounded-xl ">
+                        <p class="flex items-center justify-around w-[200px] mt-4 font-bold  text-xl mx-5"><img src="../static/Images/Annoucement.png" alt="" class="w-8"> Announcement </p>
+                        <p class="bg-[#FADADA] px-4 rounded-l mt-12 flex text-center mx-5 font-bold ">+ Add  Announcement</p>
+                    </div>
+
+                    <div class="bg-sky-100 p-3  rounded-xl my-10 ml-48 pb-4 ">
+                        <a href="/TeacherCerifyApplication.html"><p class="text-center font-bold">Application</p></a>
+
+                        <div class=" flex justify-around mt-4">
+                            <div class="border-r-2 border-black px-4 flex flex-col justify-center items-center">
+                                <img class="w-14 md:w-10 object-center" src="../static/Images/Notes.png" alt="">
+                                <p class="text-center px-6">Leave Application</p>
+                            </div>
+                            
+                            <a href="/TeacherComplaint.html">
+                                <div class=" px-4 flex flex-col  justify-center items-center">
+                                    <img class="w-14 md:w-10" src="../static/Images/Notes.png" alt="">
+                                    <p class="text-center px-6">Complaint</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div> 
+    
+                    </div>
+                </div>
+
+            </div>
+
+        
+
+
+            <div class="w-2/12 bg-sky-50 p-1" id="right-side">
+                <div class="flex justify-end ">
+                    <a href=""><img src="../static/Images/Annoucement.png" alt="" class="md:w-8"></a>
+                </div>
+                
+                <div class="timetable">
+                    <h1 class="font-bold">Time Table</h1>
+                    <!-- <img class="mt-2" src="/Images/TimeTable.svg" alt=""> -->
+                    <div class="md:w-44 h-32 flex justify-center items-center bg-[#d4d4d4] m-5 ">
+                        <p class=""></p>
+                    </div>
+                </div>
+
+                <div class="cal mt-5 p-2">
+                    <h1 class="font-bold ">Calender</h1>
+                </div>
+
+                <div class="bg-white m-5 p-5">
+                    <p class="text-black text-center mt-1">Thu</p>
+                    <p class="text-black text-center mt-1 font-bold text-3xl md:text-xl ">4-6</p>
+                    <p class="text-black text-center mt-1 font-bold text-xl md:text-lg">August</p>
+                    <div class="flex justify-evenly items-center">
+                        <p class="w-2 h-2 bg-red-600 mt-2 rounded-3xl"></p>
+                        <p class="text-black text-center md:text-sm mt-1">CAT Exam</p>
+                    </div>
+                </div>
+                <div class="bg-white m-5 p-5">
+                    <p class="text-black text-center mt-1">Sat</p>
+                    <p class="text-black text-center mt-1 font-bold text-3xl md:text-xl">7</p>
+                    <p class="text-black text-center mt-1 font-bold text-xl md:text-lg">September</p>
+                    <div class="flex justify-around items-center">
+                        <p class="w-2 h-2 bg-blue-400 mt-2 rounded-3xl"></p>
+                        <p class="text-black text-center md:text-sm mt-1">Ganesh Chaturthi</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+</html>

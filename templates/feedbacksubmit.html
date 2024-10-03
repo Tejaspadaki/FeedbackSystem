@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Submitted</title>
+    <link rel="shortcut icon" href="../static/Images/sgu-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex flex-col md:flex-row h-screen bg-[#00293B]">
+        <!-- Sidebar -->
+        <div class="text-white md:w-[200px] w-full md:fixed flex flex-col items-center py-4 max-[500px]:hidden">
+            <div class="flex items-center justify-center w-full px-4 md:px-0 ">
+                <img class="border-white rounded-full w-16 md:mx-0 mx-4" src="../static/Images/student_profile_logo.png"
+                    alt="Profile">
+                <div class="md:hidden block">
+                    <img class="w-8" src="../static/Images/logout.png" alt="Logout">
+                </div>
+            </div>
+            <h1 class="text-center text-gray-400 mt-3 font-bold">{{ session.name }}</h1>
+            <h1 class="text-center text-gray-400 mt-3 font-bold max-[500px]:hidden">{{ session.year_class }}</h1>
+            <p class="text-center text-gray-400 mt-3 text-xl font-serif font-bold md:hidden block max-[500px]:hidden">Welcome, {{ name }}</p>
+            <nav class="mt-6 w-full">
+                <ul>
+                    <li class="mt-8 flex justify-center items-center  md:flex">
+                        <img class="w-8" src="../static/Images/dashboard_logo.png" alt="Dashboard">
+                        <a href="/student-dashboard" class="text-center text-gray-400 ml-2">Dashboard</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-8 flex justify-center items-center  md:flex">
+                <img class="w-8" src="../static/Images/logout.png" alt="Logout">
+                <a href="/logout" class="text-center text-gray-400 ml-2">Logout</a>
+            </div>
+        </div>
+
+        <div class="min-[500px]:hidden">
+            <div class="md:hidden block max-[500px]:mt-2 max-[500px]:flex max-[500px]:justify-end max-[500px]:mx-5">
+                <div class="min-[500px]:hidden">
+                    <div class="md:hidden block max-[500px]:mt-2 max-[500px]:flex max-[500px]:justify-end max-[500px]:mx-5">
+                        <button class="min-[500px]:hidden text-3xl text-white" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        
+                        <nav class="">
+                            <ul class=" gap-10 px-10 bg-[#00293ba6] text-white font-bold font-serif py-2 absolute top-0 right-0 h-full w-full z-[999] flex-col items-center justify-start backdrop-blur hidden slider" >
+                            <a href="" class=" absolute right-4 text-xl"><li class="" onclick="cancel()"><i class="fa-solid fa-x"></i></li></a>
+                            <a href="/student-dashboard" class="text-xl flex gap-4 items-center justify-around mt-20 "><img src="/static/Images/dashboard_logo.png" alt="dashboard_logo" class="w-7">Dashboard</a>
+                            <a href="/logout" class="text-xl  flex gap-4 items-center justify-around"><img src="/static/Images/logout.png" alt="logout" class="w-7">logout</a>
+        
+                            <div id="codequell" class="flex flex-col items-center mt-4 w-full text-center space-y-2 absolute bottom-4">
+                                <span class="text-sm">Developed By</span>
+                                <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                                <span class="text-xs text-white">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                            </div>
+        
+                        </nav>
+                    </div>
+        
+                  
+                </div>
+            </div>
+
+            <div class="max-[500px]:flex max-[500px]:justify-between max-[500px]:px-5 max-[500px]:items-center max-[500px]:my-8">
+                <h1 class="text-center text-gray-400 font-bold">{{ session.name }}</h1>
+                <img class="border-white rounded-full w-16 md:mx-0 mx-4" src="../static/Images/student_profile_logo.png" alt="Profile">
+            </div>
+        </div>
+
+        <div class="md:ml-[200px] w-full bg-white max-[500px]:border max-[500px]:rounded-t-[50px] p-10 h-[100vh] justify-center items-center md:rounded-bl-[40px] md:rounded-tl-[40px]">
+            <div class="flex justify-center items-center">
+                <p class="text-center text-3xl font-bold ">Your Feedback has been Successfully Submitted</p>
+            </div>
+
+            <div class="flex justify-center items-baseline absolute bottom-6 min-[500px]:right-[38%] max-[500px]:right-[25%]">
+                <div id="codequell" class="flex flex-col items-center mt-4  text-center space-y-2  ">
+                    <span class="text-sm">Developed By</span>
+                    <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                    <span class="text-xs text-gray-500">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+</body>
+
+<script>
+    function toggleSidebar(){
+   const slid = document.querySelector(".slider");
+   slid.style.display='flex';
+}
+
+function cancel(){
+   const close = document.querySelector(".slider")
+   sild.style.display='none'
+}
+</script>
+
+</html>

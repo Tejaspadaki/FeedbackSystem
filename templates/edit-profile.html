@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Profile</title>
+    <style>
+        /* Basic Styling */
+    
+        /* h1 {
+            text-align: center;
+        }
+        form {
+        
+    
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        } */
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='/profile';" class="m-2 p-2 bg-yellow-300 rounded-xl">Back to Profile</button>
+    <h1 class="font-bold text-center text-2xl mt-2 ">Edit Student Profile</h1>
+    <div class="flex justify-center items-center"> 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+    <form id="editProfileForm" method="POST" action="/edit-profile">
+        
+
+        <!-- <div class="flex justify-around items-center gap-4">
+           <div class="">
+            <label for="Student_Year">Student Year:</label>
+            <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Student_Year" name="Student_Year" value="{{ student_profile.Student_Year }}">
+           </div>
+           <div class="">
+                <label for="Division">Division:</label>
+                        <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Division" name="Division" value="{{ student_profile.Division }}">
+           </div>
+           <div class="">
+                <label for="Batch">Batch:</label>
+                        <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Batch" name="Batch" value="{{ student_profile.Batch }}">
+           </div>
+
+       
+
+        
+
+        </div> -->
+        <div class="flex justify-around items-center mt-8">
+            <div class="flex flex-col justify-center items-center gap-3">
+                <div class="flex justify-center items-center gap-8">
+                    <label for="Mobile"><img class="w-8" src="../static/Images/Phone.svg" alt="" class=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Mobile" name="Mobile" value="{{ student_profile.Mobile }}">
+                </div>
+    
+                <div class="flex justify-center  gap-2 items-center gap-8">
+                    <label for="Gender"><img class="w-8" src="../static/Images/User Male.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Gender" name="Gender" value="{{ student_profile.Gender }}">
+                </div>
+        
+                <div class="flex justify-center items-center gap-8">
+                    <label for="DOB"><img class="w-8" src="../static/Images/Calendar.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="date" id="DOB" name="DOB" value="{{ student_profile.DOB }}">
+                </div>
+        
+                <div class="flex justify-center items-center gap-8">
+                    <label for="Blood_group"><img class="w-8" src="../static/Images/Drop of Blood.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Blood_group" name="Blood_group" value="{{ student_profile.Blood_group }}">
+                </div>
+            </div>
+
+            
+            <div class="flex flex-col justify-center items-center gap-4">
+                <div class="flex justify-center items-center gap-8">
+                    <label for="Email"><img class="w-8" src="../static/Images/MailID.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="email" id="Email" name="Email" value="{{ student_profile.Email }}">
+                </div>
+                <div class="flex justify-center items-center gap-8">
+                    <label for="PRN"><img class="w-8" src="../static/Images/ABID.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="PRN" name="PRN" value="{{ student_profile.PRN }}" required>
+
+                </div>
+                <div class="flex justify-center items-center gap-8">
+                    <label for="Roll"><img class="w-8" src="../static/Images/ABID.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="PRN" name="PRN" value="{{ student_profile.PRN }}" required>
+                </div>
+                <div class="flex justify-center items-center gap-8">
+                    <label   for="Address"><img class="w-8" src="../static/Images/Address.svg" alt=""></label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Address" name="Address" value="{{ student_profile.Address }}">
+                </div>
+
+                
+                
+
+                
+            </div>
+        </div>
+
+        <div class=" flex justify-around items-center ">
+            <div class="">
+                <div class=" flex justify-around gap-4 items-center ">
+                    <label for="Father_Name">Father's Name:</label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Father_Name" name="Father_Name" value="{{ student_profile.Father_Name }}">
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+                    <label for="Mother_Name">Mother's Name:</label>
+                            <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Mother_Name" name="Mother_Name" value="{{ student_profile.Mother_Name }}">
+
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+
+                    <label for="Guardian_Name">Guardian's Name:</label>
+                    <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Guardian_Name" name="Guardian_Name" value="{{ student_profile.Guardian_Name }}">
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+                    <label for="10th_School_Name">10th School Name:</label>
+                            <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="10th_School_Name" name="10th_School_Name" value="{{ student_profile['10th_School_Name'] }}">
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+
+                        <label for="12th_School_Name">12th School Name:</label>
+                        <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="12th_School_Name" name="12th_School_Name" value="{{ student_profile['12th_School_Name'] }}">
+
+                </div>
+            </div>
+            <div class="">
+                <div class=" flex justify-center gap-8 items-center mt-4">
+                        <label for="Father_Mobile"><img src="/static/Images/Phone.svg" alt="" class="w-8"></label>
+                        <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Father_Mobile" name="Father_Mobile" value="{{ student_profile.Father_Mobile }}">
+                </div>
+                <div class=" flex justify-center gap-8 items-center mt-4">
+                    <label for="Mother_Mobile"><img src="/static/Images/Phone.svg" alt="" class="w-8"></label>
+                            <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Mother_Mobile" name="Mother_Mobile" value="{{ student_profile.Mother_Mobile }}">
+                </div>
+                <div class=" flex justify-center gap-8 items-center mt-4">
+                    <label for="Guardian_Mobile"><img src="/static/Images/Phone.svg" alt="" class="w-8"></label>
+                            <input class="w-[250px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="text" id="Guardian_Mobile" name="Guardian_Mobile" value="{{ student_profile.Guardian_Mobile }}">
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+                    <label for="10th_Marks">10th Marks (%):</label>
+                            <input class="w-[200px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="number" step="0.01" id="10th_Marks" name="10th_Marks" value="{{ student_profile['10th_Marks'] }}">
+                </div>
+                <div class=" flex justify-around gap-4 items-center  mt-4">
+                    <label for="12th_Marks">12th Marks (%):</label>
+                            <input class="w-[200px] px-4 py-2 rounded-xl bg-[#d4d4d4]" type="number" step="0.01" id="12th_Marks" name="12th_Marks" value="{{ student_profile['12th_Marks'] }}">
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        
+
+       
+
+        
+       
+
+
+      <div class="flex justify-center items-center mt-6 ">
+        <input class="w-[250px] px-4 py-2 rounded-xl bg-green-400" type="submit" value="Update Profile">
+      </div>  
+
+       
+
+        
+
+        
+
+      
+    </form>
+    
+
+    <script>
+        // Handle form submission using JavaScript
+        const form = document.getElementById('editProfileForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent traditional form submission
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Send the POST request via fetch
+            const response = await fetch('/edit-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data)
+            });
+
+            // Show the result of the submission
+            const result = await response.json();
+            document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+        });
+    </script>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+</html>

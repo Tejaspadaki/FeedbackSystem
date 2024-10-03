@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Student Subject</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+        <div class="main flex h-100 bg-[#00293B] ">
+            <div class="  bg-rgb(0, 41, 59) text-white w-[150px] h-[100vh] max-[500px]:hidden ">
+                <div class="head ">
+                    <div class="flex justify-center flex-col items-center">
+                        <img class=" mt-6 border-white rounded-lg w-24 max-[1000px]:w-16 " src="../static/Images/HOD-Profile.svg" alt="HOD Profile">
+                        <h1 class="text-center text-gray-400 mt-3 font-bold ">HOD</h1>
+                    </div>
+
+                <nav class="mt-6">
+                    <ul class=" flex justify-center ">
+                        <!-- <li class="mt-8 flex items-center"><a href=""><img class="w-8 mx-8" src="/Images/Dashboard.svg" alt=""> <p class="text-center text-gray-400">Dashboard</p></a> </li>
+                        <li class="mt-8 flex items-center"><a href=""><img class="w-8 mx-8" src="/Images/Student-report.svg" alt=""> <p class="text-center text-gray-400">Student Report</p></a></li>
+                        <li class="mt-8 flex items-center"><a href=""><img class="w-8 mx-8" src="/Images/Application Form.svg" alt=""> <p class="text-center text-gray-400">Leave Application</p></a></li> 
+                        <li class="mt-8 flex items-center"><a href=""><img class="w-8 mx-8" src="/Images/HOD Function.svg" alt=""> <p class="text-center text-gray-400">HOD Function </p></a></li> -->
+                        <li class="mt-8 flex items-center"><a href=""><img class="w-8 mx-8 max-[910px]:mx-2" src="../static/Images/feedback.svg" alt=""> <p class="text-center text-gray-400">Feedback</p></a></li>
+                    </ul>
+                </nav>
+
+                <div class="mt-20 mb-[20.5px] flex justify-center items-center">
+                    <a href="/logout"><img class="w-8" src="../static/Images/logout.png" alt=""></a>
+                </div>
+            </div>
+                
+                
+            </div>
+
+
+            <div class="w-11/12 bg-white rounded-l-3xl ml-[150] max-[500px]:w-full max-[500px]:rounded-l max-[500px]:bg-[#00293b]  ">
+                <div class="mx-12 max-[500px]:mx-0 ">
+                    <a href=""><img src="../static/Images/Arrow right.svg" alt="" class="max-[450px]:w-12 min-[500px]:hidden max-[450px]:py-10"></a>
+                    <div class="head mt-8 max-[500px]:bg-[#00293b]">
+                        <p class="font-bold text-3xl max-[500px]:mx-5 max-[500px]:text-white max-[500px]:mb-10">Feedback Result</p>
+                    </div>
+
+                    <div class="bg-white max-[500px]:rounded-t-[25px] max-[500px]:pt-2 ">     
+                        <form action="" method="post">
+                            <div class="flex justify-around items-center mt-10 max-[650px]:flex-col">
+                            <div class="bg-[#rgb(217,217,217)]">
+                                <select name="selected_class" id="" class="bg-[rgb(217,217,217)] max-[6500x]:text-lg  sm:px-2 lg:px-4 py-2 max-sm:w-52 lg:w-72 rounded-xl border-1 border-[#d4d4d4] max-[450px]:text-sm max-[450px]:w-[150px]" action="/class-submit" onchange="this.form.submit()">
+                                    {% for class in class_data %}
+                                        <option value="{{ class.class_name }}" {% if class.class_name == selected_class %}selected{% endif %}>{{ class.class_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="bg-[#rgb(217,217,217)]">
+                                <select name="selected_subject" id="" class="bg-[rgb(217,217,217)] max-[650px]:text-lg  sm:px-2 lg:px-4 py-2 max-sm:w-52 lg:w-72 rounded-xl border-1 border-[#d4d4d4] max-[450px]:text-sm max-[450px]:w-[150px]">
+                                    <option value="Select Subject">Select Subject</option>
+                                    {% for s in range(0, sub_data|length) %}
+                                        <option value="{{ sub_data[s].subject_name }}"  {% if sub_data[s].subject_name == selected_subject %}selected{% endif %}>{{ sub_data[s].subject_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="bg-[#rgb(217,217,217)]">
+                                <select name="selected_teacher" id="" class="bg-[rgb(217,217,217)] max-[650px]:text-lg  sm:px-2 lg:px-4 py-2 max-sm:w-52 lg:w-72 rounded-xl border-1 border-[#d4d4d4] max-[450px]:text-sm max-[450px]:w-[150px]">
+                                    <option value="Select Teacher">Select Teacher</option>
+                                    {% for s in range(0, sub_data|length) %}
+                                        <option value="{{ sub_data[s].teacher_name }}"  {% if sub_data[s].teacher_name == selected_teacher %}selected{% endif %}>{{ sub_data[s].teacher_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="">
+                                <button class="bg-[#00293B] sm:text-lg sm:px-5 lg:px-10 py-2 text-xl text-white rounded-3xl max-[450px]:hidden max-[450px]:absolute max-[400px]:top-[3500px] max-[450px]:right-[130px] max-[450px]:mt-6 max-[450px]:px-6 max-[450px]:top-[3290px] max-[450px]:right-[150px] " type="submit">SUBMIT </button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+
+                    <div class="flex justify-center items-center">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                <div class="bg-white shadow-md rounded-lg p-4 max-w-lg">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            {% for category, message in messages %}
+                                                <div class=" border-t border-b text-red-700 px-4 py-3 mb-2"
+                                                    role="alert">
+                                                    <p class="font-bold">{{ message }}</p>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <button class="text-black text-[24px] bg-white rounded-full p-1 ml-2" onclick="this.parentElement.parentElement.remove();">
+                                            <i class="fa-solid fa-x" style="position:relative; bottom:28px;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <div class="flex justify-around max-[500px]:justify-start ">
+                        <div class=" mt-10 h-[200px] mx-12 max-[500px]:mx-3  ">
+                            <table class="">
+                                <tr class="">
+                                    <th class="px-4 text-left border-[1px] border-black">Q No.</th>
+                                    <th class="px-10 text-left border-[1px] border-black">A</th>
+                                    <th class="px-10 text-left border-[1px] border-black">B</th>
+                                    <th class="px-10 text-left border-[1px] border-black">C</th>
+                                    <th class="px-10 text-left border-[1px] border-black">D</th>
+                                    <th class="px-4 text-left border-[1px] border-black">Average</th>
+                                
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 1</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[0][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[0][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[0][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[0][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[0][5]}}</td>
+                                
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 2</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[1][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[1][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[1][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[1][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[1][5]}}</td>
+                                
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 3</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[2][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[2][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[2][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[2][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[2][5]}}</td>
+                                
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 4</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[3][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[3][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[3][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[3][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[3][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 5</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[4][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[4][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[4][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[4][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[4][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 6</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[5][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[5][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[5][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[5][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[5][5]}}</td>
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 7</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[6][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[6][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[6][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[6][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[6][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 8</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[7][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[7][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[7][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[7][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[7][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 9</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[8][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[8][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[8][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[8][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[8][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Q 10</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[9][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[9][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[9][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[9][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[9][5]}}</td>
+                                
+                                    
+                                </tr>
+
+                                <tr class="">
+                                    <td class="px-2 text-left border-[1px] border-black">Average</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[10][1]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[10][2]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[10][3]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[10][4]}}</td>
+                                    <td class="px-10 text-left border-[1px] border-black">{{feedback_data[10][5]}}</td>
+                                
+                                    
+                                </tr>
+                                
+                            </table>
+                            <!-- <div class="px-20 py-5 border-black border-[1.5px] flex justify-around items-center max-[500px]:px-5">
+                                <p class="font-bold">Total Count=</p>
+                                <button class="bg-[#00293B] text-white px-10 py-2 rounded-3xl  font-bold w-30 flex justify-center">Generate PDF</button>
+
+                            </div> -->
+                        </div>
+
+                        <div class="flex justify-center items-center mt-8 ">
+                            <canvas id="myChart" style="width:100%;max-width:600px; margin-top: 100px;" ></canvas>
+                        </div>
+                    </div>
+
+                   
+                    
+
+                </div>
+
+                <div class="flex justify-center items-center mt-20">
+                    <button onclick="generatePDF()" class="bg-[#00293B] sm:text-lg sm:px-5 lg:px-10 py-2 text-xl text-white rounded-3xl max-[450px]:hidden max-[450px]:absolute max-[400px]:top-[3500px] max-[450px]:right-[130px] max-[450px]:mt-6 max-[450px]:px-6 max-[450px]:top-[3290px] max-[450px]:right-[150px] " type="submit">Generate PDF </button>
+                </div>
+
+                   
+
+                </div>
+            </div>
+
+        
+
+
+           
+        </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+
+function generatePDF() {
+    const { jsPDF } = window.jspdf;
+
+    // Initialize a new PDF document
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    // Capture the table element and teacher/class/subject info
+    const table = document.querySelector('table');
+    const teacher = document.querySelector("select[name='selected_teacher']").value;
+    const subject = document.querySelector("select[name='selected_subject']").value;
+    const className = document.querySelector("select[name='selected_class']").value;
+
+    // Add teacher, subject, and class name as header
+    doc.setFontSize(12);
+    doc.text(20, 40, `Teacher: ${teacher}`);
+    doc.text(20, 60, `Subject: ${subject}`);
+    doc.text(20, 80, `Class: ${className}`);
+
+    // Convert the table to a canvas and add it to PDF
+    html2canvas(table, { scale: 2 }).then((canvas) => { // scale 2 for better quality
+        const tableImg = canvas.toDataURL('image/png');
+        const imgWidth = 550;
+        const pageWidth = doc.internal.pageSize.width;
+        const pageHeight = doc.internal.pageSize.height;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // Check if the table fits on one page, if not split across pages
+        let yPosition = 100;
+        if (imgHeight + yPosition > pageHeight) {
+            let pagesNeeded = Math.ceil((imgHeight + yPosition) / pageHeight);
+            for (let i = 0; i < pagesNeeded; i++) {
+                if (i > 0) {
+                    doc.addPage();
+                    yPosition = 20; // Reset position for the next page
+                }
+                const startPosition = i * pageHeight - 100; // Adjust start position for each page
+                doc.addImage(tableImg, 'PNG', 20, yPosition, imgWidth, imgHeight, undefined, 'FAST', startPosition);
+            }
+        } else {
+            // Add table image to the PDF
+            doc.addImage(tableImg, 'PNG', 20, yPosition, imgWidth, imgHeight);
+        }
+
+        doc.save(`feedback_report_${teacher}_${subject}.pdf`);
+    });
+}
+
+    const pie_data = {{ pie_data|tojson }};
+    const xValues = pie_data.xValues;
+    const yValues = pie_data.yValues;
+    const barColors = [
+      "#b91d47",
+      "#00aba9",
+      "#2b5797",
+      "#e8c3b9",
+      "#1e7145"
+    ];
+    
+    new Chart("myChart", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Subject"
+        }
+      }
+    });
+    </script>
+</html>

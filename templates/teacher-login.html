@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGU Teacher Login</title>
+    <link rel="shortcut icon" href="../static/Images/sgu-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @media (max-width: 768px) {
+            .mobile-flex {
+                flex-direction: column;
+            }
+            .teacher-login-bg {
+                background-color: #00293B;
+                border-bottom-left-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
+            .hide-on-mobile {
+                display: none;
+            }
+        }
+        body {
+            background-color: #00293B;
+        }
+        button {
+            background-color: #00293B;
+        }
+        @media (max-width: 768px) {
+        .max-w-lg {
+            width: 600px; /* Fixed width */
+        }
+    }
+    </style>
+</head>
+
+<body class="h-screen m-0 font-sans bg-gray-100">
+    <div class="flex bg-white shadow-lg rounded-lg md:overflow-hidden h-screen mobile-flex">
+        <div class="w-full flex justify-center items-center p-5 teacher-login-bg">
+            <img src="../static/Images/teacher-login.png" alt="teacher-login" class="2xl:h-[621px] md:h-[500px] max-[500px]:h-96">
+        </div>
+        <div class="w-full flex justify-center items-center max-[500px]:h-[100vh] max-[500px]:bg-white max-[500px]:">
+            <div class="w-full max-w-md">
+                <div class="flex justify-center mb-8 hide-on-mobile">
+                    <img src="../static/Images/sgu-logo.png" alt="SGU Logo" class="h-36 max-[500px]:hidden">
+                </div>
+
+                <div class="flex justify-center items-center">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="bg-white shadow-md rounded-lg p-4 max-w-lg">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        {% for category, message in messages %}
+                                            <div class=" border-t border-b text-red-700 px-4 py-3 mb-2"
+                                                role="alert">
+                                                <p class="font-bold">{{ message }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="text-black bg-white text-[24px] rounded-full p-1 ml-2" onclick="this.parentElement.parentElement.remove();">
+                                        <i class="fa-solid fa-x" style="position:relative; bottom:28px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                
+                <h2 class="text-2xl font-semibold text-gray-800 m-5 max-[500px]:hidden" id="login">Login</h2>
+                
+                <div class="flex flex-col items-center md:hidden mt-2" id="mobile-login">
+                    <img src="../static/Images/sgu-logo.png" alt="SGU Logo" class="h-20 md:hidden">
+                    <h2 class="text-2xl font-semibold text-gray-800 ">Login</h2>
+
+                </div>
+
+               <div class="flex justify-center md:block">
+                <form action="/teacher-login" method="post">
+                    <div class="m-5">
+                        <label class="block">
+                            Email <br>
+                            <input name="email" type="email" required class="w-4/5 max-[500px]:w-full p-2 px-5 bg-gray-100 border border-gray-300 rounded-full  m-2">
+                        </label>
+                    </div>
+                    <div class="m-5">
+                        <label class="block">
+                            Password <br>
+                            <input name="password" type="password" required class="w-4/5 max-[500px]:w-full p-2 px-5 bg-gray-100 border border-gray-300  rounded-full  m-2">
+                        </label>
+                        <div class="flex justify-end items-center pr-[80px] max-[500px]:pr-2 text-sm mb-4">
+                            <a href="" class="text-[#EBAA00] ">Forget Password?</a>
+                        </div>
+                    </div>
+                    <a href="">
+                        <!-- <button type="submit" class="w-4/5 p-2 text-white rounded-full m-5 ">
+                            
+                        Log In
+                    </button> -->
+
+                    <button onclick="process()" type="submit" class="w-4/5 max-[500px]:w-full p-2 flex gap-8 text-white rounded-full  m-5 mt-8 justify-center items-center px-4 py-2 bg-[#00293b]  shadow transition ease-in-out duration-150 " >
+                        <svg id="my" class="animate-spin hidden   h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p class="text-xl font-bold">Log In</p>
+                      </button>
+                </a>
+
+                    <div id="codequell" class="flex flex-col items-center mt-10 mb-2 w-full text-center space-y-2 md:absolute md:bottom-4 md:hidden ">
+                        <span class="text-sm">Developed By</span>
+                        <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                        <span class="text-xs text-gray-500">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                    </div>
+                </form>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="codequell" class="flex flex-col items-center mt-4 w-full text-center space-y-2 absolute bottom-4 max-[500px]:hidden">
+        <span class="text-sm">Developed By</span>
+        <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+        <span class="text-xs text-gray-500">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+    </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    function process(){
+   const process = document.querySelector("#my")
+   process.style.display="block"
+ }
+</script>
+</html>

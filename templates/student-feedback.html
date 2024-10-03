@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../static/Images/sgu-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <title>Student Feedback</title>
+</head>
+
+<!-- <style>
+    .main{
+        animation: a2 2s ease-in-out .2s 1  ;
+    }
+
+    @keyframes a2 {
+        0%{
+            background-color: white;
+        }   
+
+        100%{
+            background-color: #00293b;
+        }
+    }
+    
+    #navbar{
+        animation: a1 2s ease-in-out .2s 1 ;
+    }
+
+    @keyframes a1 {
+
+        0%{
+            position: absolute; 
+            left: -14%;
+        }
+
+        100%{
+            position: absolute; 
+            left: 0%;
+        }
+    }
+        #middle{
+            animation: test 2s ease-in-out .3s 1  ;
+        }
+
+        @keyframes test {
+
+            from{
+                margin-left: 100%;
+            }
+
+            to{
+                margin-left: 200px;
+            }
+            
+        } 
+
+        @media (max-width:500px){
+           .myanimation{
+                animation: test 2s ease-in-out .2s 1 ;
+            }
+
+            @keyframes test {
+               0%{
+                margin-top: 703px;
+               }
+
+        
+
+               100%{
+
+               }
+            }
+        }
+        
+    
+</style> -->
+
+<body>
+
+    <div class="main flex h-100 bg-[#00293B] max-[450px]:flex-col">
+        <div class="text-white md:w-[200px] w-full md:fixed flex flex-col items-center py-4 max-[500px]:hidden" id="navbar">
+            <div class="flex items-center justify-center w-full px-4 md:px-0 ">
+                <a href="/profile">
+                    <img class="border-white rounded-full w-16 md:mx-0 mx-4" src="../static/Images/student_profile_logo.png"
+                        alt="Profile" /></a>
+                <div class="md:hidden block">
+                    <img class="w-8" src="../static/Images/logout.png" alt="Logout">
+                </div>
+            </div>
+            <h1 class="text-center text-gray-400 mt-3 font-bold    ">{{ session.name }}</h1>
+            <h1 class="text-center text-gray-400 mt-3 font-bold  max-[500px]:hidden">{{ session.year_class }}</h1>
+            <p class="text-center text-gray-400 mt-3 text-xl font-serif font-bold md:hidden block max-[500px]:hidden">
+                Welcome, {{name}}</p>
+            <nav class="mt-6 w-full">
+                <ul>
+                    <li class="mt-8 flex justify-center flex-col items-center hidden md:flex">
+                        <img class="w-8" src="../static/Images/dashboard_logo.png" alt="Dashboard">
+                        <a href="/student-dashboard" class="text-center text-gray-400 ml-2">Dashboard</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-8 flex justify-center items-center flex-col hidden md:flex">
+                <img class="w-8" src="../static/Images/logout.png" alt="Logout">
+                <a href="/logout" class="text-center text-gray-400 ml-2">Logout</a>
+            </div>
+        </div>
+
+
+
+        <div
+            class="md:ml-[200px] w-full bg-white min-[500px]:rounded-l-[40px] h-full overflow-auto touch-auto ml-[150px] max-[450px]:mx-0 max-[450px]:w-full max-[450px]:bg-[#00293b] max-[450px]:rounded-l " id="middle">
+            <a href=""><img src="/Images/Arrow right.svg" alt=""
+                    class="max-[500px]:hidden max-[450px]:w-12 min-[450px]:hidden max-[450px]:py-6"></a>
+
+                    <div class="min-[500px]:hidden">
+                        <div class="md:hidden block max-[500px]:mt-2 max-[500px]:flex max-[500px]:justify-end max-[500px]:mx-5">
+                            <button class="min-[500px]:hidden text-3xl text-white" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+            
+                            <nav class="">
+                                <ul class=" gap-10 px-10 bg-[#00293ba6] text-white font-bold font-serif py-2 absolute top-0 right-0 h-full w-full z-[999] flex-col items-center justify-start backdrop-blur hidden slider" >
+                                <a href="" class=" absolute right-4 text-xl"><li class="" onclick="cancel()"><i class="fa-solid fa-x"></i></li></a>
+                                <a href="/student-dashboard" class="text-xl flex gap-4 items-center justify-around mt-20 "><img src="/static/Images/dashboard_logo.png" alt="dashboard_logo" class="w-7">Dashboard</a>
+                                <a href="/logout" class="text-xl  flex gap-4 items-center justify-around"><img src="/static/Images/logout.png" alt="logout" class="w-7">logout</a>
+            
+                                <div id="codequell" class="flex flex-col items-center mt-4 w-full text-center space-y-2 absolute bottom-4">
+                                    <span class="text-sm">Developed By</span>
+                                    <img src="../static/Images/codequell.png" alt="CodeQuell" class="h-5 md:h-7">
+                                    <span class="text-xs text-white">&copy; 2024 CodeQuell. All Rights Reserved.</span>
+                                </div>
+            
+                            </nav>
+                        </div>
+            
+                        
+                    </div>
+            <div class="max-[650px]:mx-6 mx-12 max-[450px]:mx-0 ">
+                <div class="head mt-10  ">
+                    <p class="text-4xl  font-serif font-bold max-[450px]:text-white max-[450px]:ml-6 max-[450px]:mt-2 ">
+                        Feedback</p>
+
+                    <!-- <li class="mt-8 flex justify-center items-center  md:flex min-[500px]:hidden">
+                        <img class="w-8" src="../static/Images/dashboard_logo.png" alt="Dashboard">
+                        <a href="#" class="text-center text-gray-400 ml-2">Dashboard</a>
+                    </li> -->
+                </div>
+
+                <div class="max-[450px]:bg-white max-[500px]:rounded-t-[25px] max-[450px]:py-4 max-[450px]:mt-6">
+
+                    <div class="flex justify-center items-center">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                <div class="bg-white shadow-md rounded-lg p-4 max-w-lg">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            {% for category, message in messages %}
+                                                <div class=" border-t border-b text-red-700 px-4 py-3 mb-2"
+                                                    role="alert">
+                                                    <p class="font-bold">{{ message }}</p>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <button class="text-black text-[24px] bg-white rounded-full p-1 ml-2" onclick="this.parentElement.parentElement.remove();">
+                                            <i class="fa-solid fa-x" style="position:relative; bottom:28px;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <div class="q max-lg:mx-10 max-sm:mx-4 mx-20 mt-10 ">
+                        <div class="q1 mt-10 max-sm:text-lg">
+                            <form action="/submit" method="post">
+                                <div class="flex justify-around items-center mt-10 ">
+                                    <div class="">
+                                        <select name="subject_name" id=""
+                                            class="bg-[rgb(217,217,217)] min-[500px]:w-[320px] text-base max-[650px]:text-lg sm:px-2 lg:px-4 py-2 max-sm:w-52  rounded-xl border-1 border-[#d4d4d4] max-[450px]:text-sm max-[450px]:w-[150px]">
+                                            <option value="">Select Subject</option>
+                                            {% for s in range(0, data|length) %}
+                                            <option value="{{ data[s].subject_name }}">{{ data[s].subject_name }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class=""> 
+                                        <select name="teacher_name" id=""
+                                        class="bg-[rgb(217,217,217)] min-[500px]:w-[250px] text-base  max-[650px]:text-lg sm:px-2 lg:px-4 py-2 max-sm:w-52  rounded-xl border-1 border-[#d4d4d4] max-[450px]:text-sm max-[450px]:w-[150px]">
+                                        <option value="">Select Teacher</option>
+                                        {% for s in range(0, data|length) %}
+                                        <option value="{{ data[s].teacher_name }}">{{ data[s].teacher_name }}</option>
+                                        {% endfor %}
+                                    </select></div>
+                                   
+                                </div>
+                                <div class="q1 mt-10 max-[500px]:text-sm text-[14px]">
+                                    <p class=" font-bold ">1. Has the teacher been punctual regular to the classes during
+                                        the semester?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center "><input type="radio" name="1" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Always on time</p>
+                                    <p class="font-bold gap-2 flex items-center "> <input type="radio" name="1" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Most of the times</p>
+                                    <p class="font-bold gap-2 flex items-center "> <input type="radio" name="1" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Some times</p>
+                                    <p class="font-bold gap-2 flex items-center "> <input type="radio" name="1" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3"> Never comes on time</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">2. Do you feel the teacher has followed the lesson plan till
+                                        this date in the semester?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="2" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Regularly</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="2" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Frequently</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="2" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Occasionally</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="2" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Never</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">3. Was the teacher always well prepared for the lecture?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="3" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Always</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="3" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Most of the times</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="3" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">only a few times</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="3" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Never</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">4. How did the teacher explain the subject?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="4" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Excellent</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="4" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Good</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="4" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Satisfactorily</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="4" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Poor</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">5. How much opportunity did the teacher give for questions
+                                        discussions?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="5" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">All the time</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="5" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Occasionally</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="5" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Rarely</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="5" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Never</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">6. How was the continuity maintained from class to class while
+                                        teaching the subject?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="6" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Excellent</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="6" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Good</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="6" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Satisfactorily</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="6" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Poor</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">7. Has the teacher motivated you to study the subject in
+                                        depth?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="7" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Highly</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="7" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Enough</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="7" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Rarely</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="7" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Never</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">8. How was the language clarity of communication of the
+                                        teacher?</p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="8" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Excellent</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="8" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Good</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="8" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Satisfactorily</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="8" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Poor</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">9. Comment on the teachers control and command over the class?
+                                    </p>
+
+
+                                    <p class="font-bold gap-2 flex items-center"><input type="radio" name="9" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Maintains good discipline by his/her presence</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="9" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Some order in the class</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="9" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Frequently class is disordered</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="9" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Class is always noisy & disordered</p>
+                                </div>
+                                <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+
+                                <div class="q1 mt-5 max-[500px]:text-sm text-[14px]">
+                                    <p class="font-bold ">10. Has the teacher been helpful outside the classroom to
+                                        clarify yours doubts?</p>
+
+
+                                    <p class="font-bold gap-2  flex items-center"><input type="radio" name="10" value="A" id=""
+                                            class="p-3 w-7 h-5 mt-3">Always</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="10" value="B" id=""
+                                            class="p-3 w-7 h-5 mt-3">Most of the times</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="10" value="C" id=""
+                                            class="p-3 w-7 h-5 mt-3">Only some times</p>
+                                    <p class="font-bold gap-2 flex items-center"> <input type="radio" name="10" value="D" id=""
+                                            class="p-3 w-7 h-5 mt-3">Never</p>
+
+                                    <hr class="border-[#00293B] border-2 mt-5 max-[500px]:border-[1px]">
+                                </div>
+
+                                <div class="loading mt-3 hidden justify-center items-center">
+                                    <img src="/static/Images/loading.gif" alt="loading" class="w-16">
+                                </div>
+
+                                <div class="flex justify-center mt-4">
+                                    <button
+                                        class="bg-[#00293B] sm:text-lg sm:px-5 lg:px-10 py-2 text-xl text-white rounded-3xl max-[500px]:px-5 mb-5"
+                                        type="submit" onclick="load()">SUBMIT </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+</body>
+
+<script>
+    function toggleSidebar(){
+   const slid = document.querySelector(".slider");
+   slid.style.display='flex';
+}
+
+function cancel(){
+   const close = document.querySelector(".slider");
+   sild.style.display='none'
+}
+
+function load(){
+    const load = document.querySelector(".loading")
+    load.style.display="flex"
+  }
+</script>
+
+</html>
