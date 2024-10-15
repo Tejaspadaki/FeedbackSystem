@@ -320,7 +320,8 @@ def hodfeedbackreport():
         if session.get('email'): 
             q = Questions()
             data = [
-                {'class_name': 'Select Class'}, {'class_name': 'SY A'}, {'class_name': 'SY B'},
+                {'class_name': 'Select Class'}, {'class_name': 'FY A'}, {'class_name': 'FY B'}, {'class_name': 'FY C'}, 
+                {'class_name': 'SY A'}, {'class_name': 'SY B'},
                 {'class_name': 'SY C'}, {'class_name': 'TY A'}, {'class_name': 'TY B'},
                 {'class_name': 'TY C'}, {'class_name': 'Btech A'}, {'class_name': 'Btech B'}
             ]
